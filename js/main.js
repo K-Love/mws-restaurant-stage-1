@@ -109,11 +109,26 @@ updateRestaurants = () => {
 /**
  * Clear current restaurants, their HTML and remove their map markers.
  */
-resetRestaurants = (restaurants) => {
+/*resetRestaurants = (restaurants) => {
   // Remove all restaurants
   self.restaurants = [];
   const ul = document.getElementById('restaurants-list');
   ul.innerHTML = '';
+
+  // Remove all map markers
+  self.markers.forEach(m => m.setMap(null));
+  self.markers = [];
+  self.restaurants = restaurants;
+} */
+
+/**
+ * Clear current restaurants, their HTML and remove their map markers. Convert ul to flexbox.
+ */
+resetRestaurants = (restaurants) => {
+  // Remove all restaurants
+  self.restaurants = [];
+  const section = document.getElementById('restaurants-list');
+  section.innerHTML = '';
 
   // Remove all map markers
   self.markers.forEach(m => m.setMap(null));
@@ -124,10 +139,21 @@ resetRestaurants = (restaurants) => {
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
-fillRestaurantsHTML = (restaurants = self.restaurants) => {
+/* fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
+  });
+  addMarkersToMap();
+} */
+
+/**
+ * Create all restaurants HTML and add them to the webpage. Convert ul to flexbox.
+ */
+fillRestaurantsHTML = (restaurants = self.restaurants) => {
+  const section = document.getElementById('restaurants-list');
+  restaurants.forEach(restaurant => {
+    section.append(createRestaurantHTML(restaurant));
   });
   addMarkersToMap();
 }
@@ -135,7 +161,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+/* createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
@@ -161,6 +187,38 @@ createRestaurantHTML = (restaurant) => {
   li.append(more)
 
   return li
+} */
+
+/**
+ * Create restaurant HTML. Convert ul to flexbox.
+ */
+createRestaurantHTML = (restaurant) => {
+  const div = document.createElement('div');
+
+  const image = document.createElement('img');
+  image.className = 'restaurant-img';
+  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  div.append(image);
+
+  /* TODO: Convert these h1 tags to h2 accessibility. */
+  const name = document.createElement('h1');
+  name.innerHTML = restaurant.name;
+  div.append(name);
+
+  const neighborhood = document.createElement('p');
+  neighborhood.innerHTML = restaurant.neighborhood;
+  div.append(neighborhood);
+
+  const address = document.createElement('p');
+  address.innerHTML = restaurant.address;
+  div.append(address);
+
+  const more = document.createElement('a');
+  more.innerHTML = 'View Details';
+  more.href = DBHelper.urlForRestaurant(restaurant);
+  div.append(more)
+
+  return div
 }
 
 /**
