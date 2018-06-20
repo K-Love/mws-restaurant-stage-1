@@ -402,6 +402,12 @@ nav h1 a {
 }
 
 @media screen and (max-width: 600px) {
+  #reviews-list li p {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
   #restaurant-hours {
     margin: auto;
   }
