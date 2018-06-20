@@ -232,13 +232,35 @@ nav h1 a {
   z-index: 1000;
 }
 
+@media screen and (max-width: 600px) {
+  .restaurant-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1300px;
+  }
+} 
+
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   height: 87%;
-  position: fixed;
-  right: 0;
-  top: 80px;
-  width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .inside #map-container {
+    flex: 100%;
+    max-width: 100%;
+    order: 2;
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .inside #map-container {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 50%;
+  }
 }
 
 .inside #map {
@@ -294,7 +316,18 @@ nav h1 a {
 }
 
 @media screen and (max-width: 600px) {
+  #restaurant-container, #reviews-container {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
 
+@media screen and (max-width: 600px) {
+  #restaurant-container {
+    flex: 100%;
+    max-width: 100%;
+    order: 1;
+  }
 }
 
 #reviews-container {
