@@ -307,6 +307,12 @@ nav h1 a {
   margin: 10px 0px;
 }
 
+@media screen and (max-width: 600px) {
+  #restaurant-address {
+    font-size: 2em;
+  }
+}
+
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
@@ -318,6 +324,12 @@ nav h1 a {
   text-align: center;
   text-transform: uppercase;
 	width: 90%;
+}
+
+@media screen and (max-width: 600px) {
+  #restaurant-cuisine {
+    font-size: 2em;
+  }
 }
 
 #restaurant-container, #reviews-container {
@@ -383,4 +395,10 @@ nav h1 a {
 
 #restaurant-hours td {
   color: #666;
+}
+
+@media screen and (max-width: 600px) {
+  #restaurant-hours td {
+    font-size: 1.5em;
+  }
 }
