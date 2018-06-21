@@ -247,9 +247,10 @@ nav h1 a {
 @media screen and (max-width: 600px) {
   .inside #map-container {
     flex: 100%;
-    max-width: 100%;
+    max-width: 80%;
     order: 2;
     height: 300px;
+    margin: 2em auto;
   }
 }
 
