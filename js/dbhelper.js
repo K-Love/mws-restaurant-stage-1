@@ -154,6 +154,20 @@ class DBHelper {
   }
 
   /**
+   * Home restaurant image srcset.
+   */
+  static imageSrcsetHome(restaurant) {
+    return (`${restaurant.srcset_home}`);
+  }
+
+   /**
+   * Restaurant page image srcset.
+   */
+  static imageSrcsetRestaurantPage(restaurant) {
+    return (`${restaurant.srcset_restaurantpage}`);
+  }
+
+  /**
    * Map marker for a restaurant.
    */
   static mapMarkerForRestaurant(restaurant, map) {

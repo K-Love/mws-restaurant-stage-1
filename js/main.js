@@ -197,11 +197,15 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  image.srcset = DBHelper.imageSrcsetHome(restaurant);
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  /* image.sizes = "320px"; */
+  const altText = restaurant.name + "located in" +restaurant.neighborhood;
+  image.title = altText;
+  image.alt = altText;
   div.append(image);
 
-  /* TODO: Convert these h1 tags to h2 accessibility. */
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   div.append(name);
 
