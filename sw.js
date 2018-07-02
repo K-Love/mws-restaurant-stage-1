@@ -1,11 +1,8 @@
-const offlineCache = 'offline-cache';
+const staticCacheName = 'restaurant-reviews-static';
 
-// list of assets to cache on install
-// cache each restaurant detail page as well
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(offlineCache)
-      .then(cache => {
+    caches.open(staticCacheName).then(cache => {
         return cache.addAll([
           '/index.html',
           '/css/styles.css',
@@ -24,7 +21,6 @@ self.addEventListener('install', event => {
           '/restaurant.html?id=8',
           '/restaurant.html?id=9',
           '/restaurant.html?id=10',
-          '/img/fixed/offline_img1.png'
         ]).catch(error => {
           console.log('Cache failed: ' + error);
         });
@@ -41,26 +37,16 @@ self.addEventListener('fetch', event => {
           return fetchResponse;
         });
       });
-    }).catch(error => {
-      if (event.request.url.includes('.jpg')) {
-        return caches.match('/img/fixed/offline_img1.png');
-      }
-      return new Response('Not connected to the internet', {
-        status: 404,
-        statusText: "Not connected to the internet"
-      });
     })
   );
 });
 
-// delete old/unused static caches
 self.addEventListener('activate', event => {
   event.waitUntil(
-    // caches.delete('-restaurant-static-001')
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.filter(cacheName => {
-          return cacheName.startsWith('restaurant-static-') && cacheName !== offlineCache;
+          return cacheName.startsWith('restaurant-reviews-static-') && cacheName !== offlineCache;
         }).map(cacheName => {
           return caches.delete(cacheName);
         })
