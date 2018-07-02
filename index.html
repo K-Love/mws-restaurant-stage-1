@@ -16,12 +16,12 @@
   </header>
 
   <main id="maincontent">
-    <section id="map-container">
+    <section id="map-container" role="application" aria-label="Google Map">
       <div id="map"></div>
     </section>
     <section>
-      <div class="filter-options">
-        <h2>Filter Results</h2>
+      <div class="filter-options" aria-labelledby="filter" role="region">
+        <h2 id="filter">Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
@@ -29,7 +29,7 @@
           <option value="all">All Cuisines</option>
         </select>
       </div>
-      <section id="restaurants-list"></section>
+      <section id="restaurants-list" aria-label="list of restaurants"></section>
     </section>
   </main>
 
